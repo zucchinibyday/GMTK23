@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5b0gdcpj2s20"]
+
+[ext_resource type="Script" path="res://Hero/Hero.gd" id="1_3u4r6"]
+[ext_resource type="PackedScene" uid="uid://dv00n22re7yg0" path="res://Hero/MovementController.tscn" id="2_ejthm"]
+[ext_resource type="Texture2D" uid="uid://cn8jloaubt3vh" path="res://hero.png" id="3_ctcng"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uguvx"]
+size = Vector2(18, 38)
+
+[node name="Hero" type="CharacterBody2D" node_paths=PackedStringArray("movement_controller")]
+script = ExtResource("1_3u4r6")
+movement_controller = NodePath("MovementController")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_ctcng")
+
+[node name="MovementController" parent="." node_paths=PackedStringArray("body") instance=ExtResource("2_ejthm")]
+body = NodePath("..")
+max_velocity = 96.0
+time_till_maxv = 8.0
+time_till_stop = 2.0
+momentum = 0.0
+time_till_max_height = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uguvx")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(200, 0)

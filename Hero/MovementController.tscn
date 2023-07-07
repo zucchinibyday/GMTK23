@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv00n22re7yg0"]
+
+[ext_resource type="Script" path="res://Hero/MovementController.gd" id="1_xsp5a"]
+
+[node name="MovementController" type="Node"]
+script = ExtResource("1_xsp5a")
+max_velocity = 100.0
