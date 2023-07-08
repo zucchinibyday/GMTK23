@@ -10,10 +10,7 @@ var facing: FACING = FACING.RIGHT
 func _ready():
 	pass
 
-func _physics_process(delta):
-	pass#ray.target_position = Vector2(facing * movement_controller.distance_covered_during_jump(), 0)
-
-var player_control_enabled := true
+var player_control_enabled := false
 
 func _process(delta):
 	if player_control_enabled:
@@ -38,8 +35,5 @@ func process_ai_control(delta):
 		print("onward!")
 		movement_controller.accelerate("right")
 	else:
-		movement_controller.decelerate()
-	
-	
-	
-	
+		if is_on_floor():
+			movement_controller.jump()

@@ -18,7 +18,7 @@ texture = ExtResource("3_ctcng")
 [node name="MovementController" parent="." node_paths=PackedStringArray("body") instance=ExtResource("2_ejthm")]
 body = NodePath("..")
 max_velocity = 96.0
-time_till_maxv = 8.0
+time_till_maxv = 3.0
 time_till_stop = 2.0
 momentum = 0.0
 time_till_max_height = 0.5
@@ -27,4 +27,4 @@ time_till_max_height = 0.5
 shape = SubResource("RectangleShape2D_uguvx")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(200, 0)
+target_position = Vector2(16, 0)
