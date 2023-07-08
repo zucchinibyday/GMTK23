@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5b0gdcpj2s20"]
 
 [ext_resource type="Script" path="res://Hero/Hero.gd" id="1_3u4r6"]
+[ext_resource type="Texture2D" uid="uid://cn8jloaubt3vh" path="res://Hero/hero.png" id="2_6yeme"]
 [ext_resource type="PackedScene" uid="uid://dv00n22re7yg0" path="res://Hero/MovementController.tscn" id="2_ejthm"]
-[ext_resource type="Texture2D" uid="uid://cn8jloaubt3vh" path="res://hero.png" id="3_ctcng"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uguvx"]
 size = Vector2(18, 38)
@@ -13,7 +13,7 @@ movement_controller = NodePath("MovementController")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("3_ctcng")
+texture = ExtResource("2_6yeme")
 
 [node name="MovementController" parent="." node_paths=PackedStringArray("body") instance=ExtResource("2_ejthm")]
 body = NodePath("..")
