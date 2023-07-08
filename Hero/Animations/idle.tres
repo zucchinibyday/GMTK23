@@ -1,0 +1,23 @@
+[gd_resource type="Animation" load_steps=6 format=3 uid="uid://jybjvhas55kf"]
+
+[ext_resource type="Texture2D" uid="uid://bk0fwgt2reudl" path="res://Hero/Animations/idle/f1.png" id="1_ubmhf"]
+[ext_resource type="Texture2D" uid="uid://dfwvroaeleiub" path="res://Hero/Animations/idle/f2.png" id="2_8pcbo"]
+[ext_resource type="Texture2D" uid="uid://bj1c3tx6egsar" path="res://Hero/Animations/idle/f3.png" id="3_x1yqw"]
+[ext_resource type="Texture2D" uid="uid://bf3idwbrfhhq5" path="res://Hero/Animations/idle/f4.png" id="4_84ggc"]
+[ext_resource type="Texture2D" uid="uid://cbst3ae3segk0" path="res://Hero/Animations/idle/f5.png" id="5_mb67h"]
+
+[resource]
+resource_name = "run"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_ubmhf"), ExtResource("2_8pcbo"), ExtResource("3_x1yqw"), ExtResource("4_84ggc"), ExtResource("5_mb67h")]
+}
