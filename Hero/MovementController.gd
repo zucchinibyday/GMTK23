@@ -6,9 +6,11 @@ var body: CharacterBody2D
 
 func _physics_process(delta):
 	if is_walking and !was_walking:
+		emit_signal("start_moving")
 		frames_since_start_walking = 0
 		was_walking = true
 	if !is_walking and was_walking:
+		emit_signal("stop_moving")
 		was_walking = false
 		frames_since_start_walking = -1
 	if is_walking and was_walking:
@@ -31,6 +33,9 @@ func _physics_process(delta):
 @export var time_till_stop: float = 1
 @onready var decel_x: float = max_velocity / (60 * time_till_stop) if time_till_stop != 0 else 0
 @export var momentum: float = 1
+
+signal start_moving
+signal stop_moving
 
 var frames_since_start_walking: int = -1
 var is_walking := false

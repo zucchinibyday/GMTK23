@@ -8,32 +8,67 @@ enum FACING { LEFT = -1, RIGHT = 1}
 var facing: FACING = FACING.RIGHT
 
 func _ready():
-	pass
+	add_to_group("loaded_object")
+	health_bar.update_health(health)
+	anim.play("idle")
+	
+	movement_controller.connect("start_moving", on_start_moving)
+	movement_controller.connect("stop_moving", on_stop_moving)
 
-var player_control_enabled := false
+var player_control_enabled := true
 
 func _process(delta):
+	if Input.is_action_just_pressed("ui_down"):
+		take_damage(1)
 	if player_control_enabled:
 		process_player_control(delta)
 	else:
 		process_ai_control(delta)
+	update_visuals()
 			
 func process_player_control(delta):
 	if Input.is_action_pressed("ui_right"):
 		movement_controller.accelerate("right")
+		facing = FACING.RIGHT
 	elif Input.is_action_pressed("ui_left"):
 		movement_controller.accelerate("left")
+		facing = FACING.LEFT
 	else:
 		movement_controller.decelerate()
 	if Input.is_action_just_pressed("ui_up"):
 		movement_controller.jump()
-		print(global_position)
-		print(movement_controller.distance_covered_during_jump())
 		
 func process_ai_control(delta):
 	if !ray.is_colliding():
-		print("onward!")
 		movement_controller.accelerate("right")
 	else:
 		if is_on_floor():
 			movement_controller.jump()
+			
+@export_group("Health")
+@export var health_bar: HealthBar
+@export var starting_health: int = 7
+var health: int = starting_health
+
+signal die
+
+func take_damage(amt: int):
+	health -= amt
+	health_bar.update_health(health)
+	if health <= 0:
+		emit_signal("die")
+		
+@onready var anim = $AnimationPlayer
+
+func update_visuals():
+	$Sprite.flip_h = facing == FACING.LEFT
+
+func on_start_moving():
+	anim.clear_queue()
+	anim.play("run_transition")
+	anim.queue("run")
+
+func on_stop_moving():
+	anim.clear_queue()
+	anim.play_backwards("run_transition")
+	anim.queue("idle")

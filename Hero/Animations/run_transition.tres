@@ -1,0 +1,23 @@
+[gd_resource type="Animation" load_steps=6 format=3 uid="uid://byd3ymv8s673b"]
+
+[ext_resource type="Texture2D" uid="uid://brfyfoc6umy3c" path="res://Hero/Animations/run_transition/f1.png" id="1_druxa"]
+[ext_resource type="Texture2D" uid="uid://cv8bth6fdcp6b" path="res://Hero/Animations/run_transition/f2.png" id="2_l4gij"]
+[ext_resource type="Texture2D" uid="uid://b3p5dgu2nfjcb" path="res://Hero/Animations/run_transition/f3.png" id="3_nv6i1"]
+[ext_resource type="Texture2D" uid="uid://bhf8n42swxfty" path="res://Hero/Animations/run_transition/f4.png" id="4_i8xyg"]
+[ext_resource type="Texture2D" uid="uid://2fsc40123ibv" path="res://Hero/Animations/run_transition/f5.png" id="5_xxelu"]
+
+[resource]
+resource_name = "run_transition"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_druxa"), ExtResource("2_l4gij"), ExtResource("3_nv6i1"), ExtResource("4_i8xyg"), ExtResource("5_xxelu")]
+}
