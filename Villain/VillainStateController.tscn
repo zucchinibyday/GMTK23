@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://co4suw1skn6w8"]
+
+[ext_resource type="Script" path="res://Villain/VillainStateController.gd" id="1_k1fwp"]
+
+[node name="VillainStateController" type="Node"]
+script = ExtResource("1_k1fwp")

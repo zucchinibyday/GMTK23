@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Hero
 
 @export var movement_controller: MovementController
 
@@ -9,7 +10,7 @@ var facing: FACING = FACING.RIGHT
 
 func _ready():
 	add_to_group("loaded_object")
-	health_bar.update_health(health)
+	health_bar.update_health(health, max_health)
 	anim.play("idle")
 	
 	movement_controller.connect("start_moving", on_start_moving)
@@ -19,7 +20,7 @@ var player_control_enabled := true
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_down"):
-		take_damage(1)
+		movement_controller.knockback(Vector2(1000, -200))
 	if player_control_enabled:
 		process_player_control(delta)
 	else:
@@ -47,14 +48,14 @@ func process_ai_control(delta):
 			
 @export_group("Health")
 @export var health_bar: HealthBar
-@export var starting_health: int = 7
-var health: int = starting_health
+@export var max_health: int = 8
+var health: int = max_health
 
 signal die
 
 func take_damage(amt: int):
 	health -= amt
-	health_bar.update_health(health)
+	health_bar.update_health(health, max_health)
 	if health <= 0:
 		emit_signal("die")
 		
