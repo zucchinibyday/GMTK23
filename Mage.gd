@@ -10,6 +10,6 @@ func _ready():
 
 func _physics_process(delta):
 	# Needs movement? Or just tags behind the hero
-	position = Vector2(hero.position.x-30, hero.position.y)
+	global_position = Vector2(hero.global_position.x - 32, hero.position.y - 16)
 	
 	
