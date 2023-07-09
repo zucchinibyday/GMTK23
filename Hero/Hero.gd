@@ -7,10 +7,6 @@ extends CharacterBody2D
 enum FACING { LEFT = -1, RIGHT = 1}
 var facing: FACING = FACING.RIGHT
 
-func _ready():
-	temp_ori_ready_code()
-	process_core_startup()
-
 var player_control_enabled := false
 
 func _process(delta):
@@ -18,8 +14,6 @@ func _process(delta):
 		process_player_control(delta)
 	else:
 		process_ai_control(delta)
-		
-	temp_ori_process_code()
 			
 func process_player_control(delta):
 	if Input.is_action_pressed("ui_right"):
@@ -40,26 +34,3 @@ func process_ai_control(delta):
 	else:
 		if is_on_floor():
 			movement_controller.jump()
-			
-			
-func temp_ori_ready_code():
-	ray.set_collision_mask_value(2,true)
-	pass
-			
-func temp_ori_process_code():
-	#ray.get_target_position(Vector2(0,0))
-	#print(ray.get_collision_point())
-	#print(ray.get_collider())
-	pass
-	
-
-
-
-
-
-func process_core_startup():
-	#Gives zach a headache
-	
-	
-	
-	pass
