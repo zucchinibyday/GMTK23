@@ -7,6 +7,8 @@ enum FACING { LEFT = -1, RIGHT = 1}
 var facing: FACING = FACING.RIGHT
 
 func _ready():
+	
+	
 	add_to_group("loaded_object")
 	add_to_group("hero")
 	health_bar.update_health(health, max_health)

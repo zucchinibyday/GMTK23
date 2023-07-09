@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b5b0gdcpj2s20"]
+[gd_scene load_steps=18 format=3 uid="uid://b5b0gdcpj2s20"]
 
 [ext_resource type="Script" path="res://Hero/Hero.gd" id="1_3u4r6"]
 [ext_resource type="Texture2D" uid="uid://cbst3ae3segk0" path="res://Hero/Animations/idle/f5.png" id="2_1u7hl"]
@@ -13,6 +13,7 @@
 [ext_resource type="Animation" uid="uid://6ev10vvievof" path="res://Hero/Animations/jump.tres" id="11_eejjl"]
 [ext_resource type="Animation" uid="uid://cltii8kw8rvll" path="res://Hero/Animations/fall.tres" id="12_2irsl"]
 [ext_resource type="Animation" uid="uid://b08imeb2h3j2s" path="res://Hero/Animations/get_up.tres" id="12_740w4"]
+[ext_resource type="Texture2D" uid="uid://dy7r5cp40k8v0" path="res://background.png" id="14_krqld"]
 
 [sub_resource type="Animation" id="Animation_i57kt"]
 resource_name = "idle"
@@ -49,8 +50,6 @@ radius = 12.0
 collision_mask = 14
 script = ExtResource("1_3u4r6")
 movement_controller = NodePath("MovementController")
-player_control_enabled = true
-invincible = true
 metadata/_edit_horizontal_guides_ = []
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -84,3 +83,12 @@ collision_mask = 6
 
 [node name="WallOnTop" type="RayCast2D" parent="Rays"]
 target_position = Vector2(48, -72)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -65)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1000
+position = Vector2(0, -65)
+scale = Vector2(1.05, 1.05)
+texture = ExtResource("14_krqld")

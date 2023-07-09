@@ -33,8 +33,6 @@ disabled = true
 
 [node name="MouseInteraction" parent="." instance=ExtResource("3_6qkok")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="MovementController" parent="." node_paths=PackedStringArray("body") instance=ExtResource("4_pfwud")]
 body = NodePath("..")
 momentum = -1.0
