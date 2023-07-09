@@ -53,7 +53,7 @@ var health: int = max_health
 signal die
 
 func take_damage(amt: int):
-	#health -= amt
+	health -= amt
 	health_bar.update_health(health, max_health)
 	if health <= 0:
 		emit_signal("die")
