@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwfy1gvxjcha2"]
+
+[ext_resource type="Texture2D" uid="uid://babb44lmrtpwd" path="res://Player/temp_cursor.png" id="1_4pdcc"]
+[ext_resource type="Script" path="res://MouseInteraction.gd" id="1_vriah"]
+[ext_resource type="Texture2D" uid="uid://dghwvtsjbncgs" path="res://icon.svg" id="2_w1hxs"]
+
+[node name="MouseInteraction" type="Node"]
+script = ExtResource("1_vriah")
+
+[node name="MouseSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_4pdcc")
+offset = Vector2(30, 110)
+
+[node name="HoverSprite" type="Sprite2D" parent="MouseSprite"]
+visible = false
+scale = Vector2(21.3333, 21.3333)
+texture = ExtResource("2_w1hxs")

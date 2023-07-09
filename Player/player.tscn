@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://s0tk725habor"]
+
+[ext_resource type="Script" path="res://Mage.gd" id="1_a0fk8"]
+[ext_resource type="Texture2D" uid="uid://diub1gwdqoowj" path="res://Player/temp_player_sprite.png" id="2_8bit6"]
+[ext_resource type="PackedScene" uid="uid://bwfy1gvxjcha2" path="res://Player/mouse_interaction.tscn" id="3_6qkok"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3iiog"]
+radius = 5.0
+height = 14.0
+
+[node name="Mage" type="CharacterBody2D"]
+script = ExtResource("1_a0fk8")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0510204, 0.0510204)
+texture = ExtResource("2_8bit6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3iiog")
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="MouseInteraction" parent="." instance=ExtResource("3_6qkok")]
+selected_tile = 2
