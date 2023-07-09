@@ -1,9 +1,7 @@
 extends CharacterBody2D
 class_name Hero
 
-@export var movement_controller: MovementController
-
-@onready var ray = $RayCast2D 
+@export var movement_controller: MovementController 
 
 enum FACING { LEFT = -1, RIGHT = 1}
 var facing: FACING = FACING.RIGHT
@@ -41,14 +39,23 @@ func process_player_control(delta):
 		movement_controller.decelerate()
 	if Input.is_action_just_pressed("ui_up"):
 		movement_controller.jump()
-		
+
+@onready var wall_in_front_ray = $Rays/WallInFront
+@onready var wall_on_top_ray = $Rays/WallOnTop
+
 func process_ai_control(delta):
-	if !ray.is_colliding():
+	print("-----")
+	print(wall_in_front_ray.is_colliding())
+	print(wall_on_top_ray.is_colliding())
+	
+	if !wall_in_front_ray.is_colliding():
 		movement_controller.accelerate("right")
-	else:
-		if is_on_floor():
-			movement_controller.jump()
-			
+		
+	if wall_in_front_ray.is_colliding() and !wall_on_top_ray.is_colliding():
+		movement_controller.accelerate("right")
+		movement_controller.jump()
+
+	
 @export_group("Health")
 @export var health_bar: HealthBar
 @export var max_health: int = 10

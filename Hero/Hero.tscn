@@ -1,10 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://b5b0gdcpj2s20"]
+[gd_scene load_steps=17 format=3 uid="uid://b5b0gdcpj2s20"]
 
 [ext_resource type="Script" path="res://Hero/Hero.gd" id="1_3u4r6"]
 [ext_resource type="Texture2D" uid="uid://cbst3ae3segk0" path="res://Hero/Animations/idle/f5.png" id="2_1u7hl"]
 [ext_resource type="PackedScene" uid="uid://dv00n22re7yg0" path="res://Hero/MovementController.tscn" id="2_ejthm"]
 [ext_resource type="Animation" uid="uid://dg73p0q5pbkcx" path="res://Hero/Animations/die.tres" id="2_kenj5"]
-[ext_resource type="Texture2D" uid="uid://bj6a1uc0n7e3w" path="res://Hero/Animations/die/f1.png" id="2_kuv5d"]
 [ext_resource type="Texture2D" uid="uid://bk0fwgt2reudl" path="res://Hero/Animations/idle/f1.png" id="3_ka6im"]
 [ext_resource type="Texture2D" uid="uid://dfwvroaeleiub" path="res://Hero/Animations/idle/f2.png" id="4_7u4r6"]
 [ext_resource type="Texture2D" uid="uid://bj1c3tx6egsar" path="res://Hero/Animations/idle/f3.png" id="5_awokg"]
@@ -52,14 +51,14 @@ script = ExtResource("1_3u4r6")
 movement_controller = NodePath("MovementController")
 player_control_enabled = true
 invincible = true
+metadata/_edit_horizontal_guides_ = []
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -64)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(10, 0)
-texture = ExtResource("2_kuv5d")
+texture = ExtResource("6_25sk8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -72,11 +71,19 @@ max_velocity = 96.0
 time_till_maxv = 3.0
 time_till_stop = 2.0
 momentum = 0.0
+max_jump_height = 96.0
 time_till_max_height = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8.5)
 shape = SubResource("CapsuleShape2D_23buj")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(16, 0)
+[node name="Rays" type="Node2D" parent="."]
+
+[node name="WallInFront" type="RayCast2D" parent="Rays"]
+position = Vector2(0, 14)
+target_position = Vector2(48, 0)
+collision_mask = 6
+
+[node name="WallOnTop" type="RayCast2D" parent="Rays"]
+target_position = Vector2(48, -72)

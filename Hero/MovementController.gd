@@ -127,6 +127,8 @@ var jumping: bool = false
 var frames_since_jump: int
 
 func jump():
+	if !body.is_on_floor():
+		return
 	if ignoring_input:
 		return
 	emit_signal("jumped")

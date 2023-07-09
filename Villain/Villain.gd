@@ -90,7 +90,7 @@ func ready_state():
 var transitioning := false
 
 func transition_state(new_state: VillainState, old_state: VillainState = all_states.IDLE):
-	print("Transitioning from %s to %s" % [old_state.state_name, new_state.state_name])
+	# print("Transitioning from %s to %s" % [old_state.state_name, new_state.state_name])
 	$Sprite2D.flip_h = __side_of_hero() == 1
 	transitioning = true
 	velocity = hero.velocity
