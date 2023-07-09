@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=3 uid="uid://bfv0d6itvi6j3"]
+
+[ext_resource type="Script" path="res://Villain/Attacks/Orb.gd" id="1_32uy5"]
+[ext_resource type="Texture2D" uid="uid://bae3tdnavf404" path="res://Villain/Attacks/Animations/OrbDisappear/f4.png" id="2_m03ia"]
+[ext_resource type="Animation" uid="uid://b8x82kmt3updk" path="res://Villain/Attacks/Animations/orb.tres" id="2_q2jm4"]
+[ext_resource type="Texture2D" uid="uid://c7pj7wjq20v0f" path="res://Villain/Attacks/Animations/OrbAppear/f1.png" id="4_p0ok2"]
+[ext_resource type="Texture2D" uid="uid://l0e6p0rlmuk0" path="res://Villain/Attacks/Animations/OrbAppear/f2.png" id="5_js7mb"]
+[ext_resource type="Texture2D" uid="uid://74cdhkgvchw0" path="res://Villain/Attacks/Animations/OrbAppear/f3.png" id="6_j0vy1"]
+[ext_resource type="Texture2D" uid="uid://qdj5fgqllehi" path="res://Villain/Attacks/Animations/OrbAppear/f4.png" id="7_bc35i"]
+[ext_resource type="Animation" uid="uid://b1wgqtd1iyxpg" path="res://Villain/Attacks/Animations/orb_disappear.tres" id="8_c05hg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ti158"]
+radius = 13.0
+
+[sub_resource type="Animation" id="Animation_knirk"]
+resource_name = "orb_disappear"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_p0ok2"), ExtResource("5_js7mb"), ExtResource("6_j0vy1"), ExtResource("7_bc35i")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kqg6e"]
+_data = {
+"orb": ExtResource("2_q2jm4"),
+"orb_appear": SubResource("Animation_knirk"),
+"orb_disappear": ExtResource("8_c05hg")
+}
+
+[node name="Orb" type="Area2D"]
+script = ExtResource("1_32uy5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_m03ia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ti158")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kqg6e")
+}

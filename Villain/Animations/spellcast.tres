@@ -1,0 +1,29 @@
+[gd_resource type="Animation" load_steps=12 format=3 uid="uid://b1t7qjuyh35ue"]
+
+[ext_resource type="Texture2D" uid="uid://qul1bh5kvd4j" path="res://Villain/Animations/spellcast/f1.png" id="1_57vum"]
+[ext_resource type="Texture2D" uid="uid://csvaskndvvl0x" path="res://Villain/Animations/spellcast/f2.png" id="2_kmgny"]
+[ext_resource type="Texture2D" uid="uid://cpavnn6xsfnlb" path="res://Villain/Animations/spellcast/f3.png" id="3_vd38i"]
+[ext_resource type="Texture2D" uid="uid://csd4uw6yry11k" path="res://Villain/Animations/spellcast/f4.png" id="4_wpj1b"]
+[ext_resource type="Texture2D" uid="uid://c15bh4os605pv" path="res://Villain/Animations/spellcast/f5.png" id="5_18ltf"]
+[ext_resource type="Texture2D" uid="uid://dtc7y0e2ymy48" path="res://Villain/Animations/spellcast/f6.png" id="6_4pqss"]
+[ext_resource type="Texture2D" uid="uid://do3dy3bpbwb0" path="res://Villain/Animations/spellcast/f7.png" id="7_jc7ss"]
+[ext_resource type="Texture2D" uid="uid://dtn6ioxn3u63x" path="res://Villain/Animations/spellcast/f8.png" id="8_a76bi"]
+[ext_resource type="Texture2D" uid="uid://dcjhdsok7v618" path="res://Villain/Animations/spellcast/f9.png" id="9_xehps"]
+[ext_resource type="Texture2D" uid="uid://bu3c5b3t80eul" path="res://Villain/Animations/spellcast/f10.png" id="10_p6rxs"]
+[ext_resource type="Texture2D" uid="uid://ddct0a452wks" path="res://Villain/Animations/spellcast/f11.png" id="11_qxsip"]
+
+[resource]
+resource_name = "spellcast"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_57vum"), ExtResource("2_kmgny"), ExtResource("3_vd38i"), ExtResource("4_wpj1b"), ExtResource("5_18ltf"), ExtResource("6_4pqss"), ExtResource("7_jc7ss"), ExtResource("8_a76bi"), ExtResource("9_xehps"), ExtResource("10_p6rxs"), ExtResource("11_qxsip"), ExtResource("1_57vum")]
+}

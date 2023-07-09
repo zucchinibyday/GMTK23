@@ -42,6 +42,7 @@ script = ExtResource("1_3u4r6")
 movement_controller = NodePath("MovementController")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -64)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1

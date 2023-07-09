@@ -10,13 +10,14 @@ var facing: FACING = FACING.RIGHT
 
 func _ready():
 	add_to_group("loaded_object")
+	add_to_group("hero")
 	health_bar.update_health(health, max_health)
 	anim.play("idle")
 	
 	movement_controller.connect("start_moving", on_start_moving)
 	movement_controller.connect("stop_moving", on_stop_moving)
 
-var player_control_enabled := true
+@export var player_control_enabled := true
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_down"):
