@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://s0tk725habor"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_8cxtt"]
-[ext_resource type="PackedScene" uid="uid://bwfy1gvxjcha2" path="res://Player/MouseInteraction.tscn" id="3_6qkok"]
+[ext_resource type="PackedScene" uid="uid://fsjtls5libof" path="res://Player/MouseInteraction.tscn" id="3_6qkok"]
 [ext_resource type="PackedScene" uid="uid://dv00n22re7yg0" path="res://Hero/MovementController.tscn" id="4_pfwud"]
 [ext_resource type="Animation" uid="uid://ure26rrwm8uc" path="res://Player/Animations/idle.tres" id="5_dp0ns"]
 [ext_resource type="Texture2D" uid="uid://chus7kbhyaidl" path="res://Player/Animations/Idle/f1.png" id="5_tf32v"]
