@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cu3paqv8beb0x"]
+[gd_scene load_steps=6 format=3 uid="uid://cu3paqv8beb0x"]
 
 [ext_resource type="PackedScene" uid="uid://b5b0gdcpj2s20" path="res://Hero/Hero.tscn" id="1_wvkbg"]
 [ext_resource type="Script" path="res://Main/Main.gd" id="1_x28gl"]
 [ext_resource type="PackedScene" uid="uid://csvjucxmn0ki6" path="res://Hero/Healthbar/Healthbar.tscn" id="2_g24hq"]
-[ext_resource type="Texture2D" uid="uid://cvohfdows06xe" path="res://tempbg.png" id="3_3nl3v"]
 [ext_resource type="TileSet" uid="uid://b1443qm0dk2io" path="res://test_set.tres" id="4_v23vq"]
 [ext_resource type="PackedScene" uid="uid://corjqh4mlnj62" path="res://Villain/Villain.tscn" id="6_reyvj"]
 
@@ -16,24 +15,19 @@ player_control_enabled = false
 health_bar = NodePath("Healthbar")
 
 [node name="Healthbar" parent="Hero" instance=ExtResource("2_g24hq")]
+z_index = 100
 offset_left = -190.0
 offset_top = -167.0
 offset_right = -190.0
 offset_bottom = -167.0
 
 [node name="Villain" parent="." instance=ExtResource("6_reyvj")]
+z_index = -10
 position = Vector2(424, 229)
 collision_layer = 4
 
-[node name="Tempbg" type="Sprite2D" parent="."]
-z_index = -10
-texture_filter = 1
-position = Vector2(8, 8)
-texture = ExtResource("3_3nl3v")
-metadata/_edit_lock_ = true
-
 [node name="TileMap" type="TileMap" parent="."]
-z_index = -5
+z_index = -100
 texture_filter = 1
 tile_set = ExtResource("4_v23vq")
 format = 2

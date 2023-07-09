@@ -48,6 +48,7 @@ _data = {
 }
 
 [node name="Orb" type="Area2D"]
+z_index = 10
 script = ExtResource("1_32uy5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

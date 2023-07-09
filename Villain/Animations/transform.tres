@@ -1,0 +1,37 @@
+[gd_resource type="Animation" load_steps=8 format=3 uid="uid://k11ipqh5npu3"]
+
+[ext_resource type="Texture2D" uid="uid://dujcdrnpy1mmh" path="res://Villain/Animations/transform/f1.png" id="1_oeo50"]
+[ext_resource type="Texture2D" uid="uid://b6u2u7tgjmlpr" path="res://Villain/Animations/transform/f2.png" id="2_mk0x7"]
+[ext_resource type="Texture2D" uid="uid://cf5rufaomojgb" path="res://Villain/Animations/transform/f3.png" id="3_cm2hp"]
+[ext_resource type="Texture2D" uid="uid://b2wajjinomr0q" path="res://Villain/Animations/transform/f4.png" id="4_dxkht"]
+[ext_resource type="Texture2D" uid="uid://xxb5yu1hx0em" path="res://Villain/Animations/transform/f5.png" id="5_jnocv"]
+[ext_resource type="Texture2D" uid="uid://bm3540nv10d3o" path="res://Villain/Animations/transform/f6.png" id="6_xahpb"]
+[ext_resource type="Texture2D" uid="uid://crog3knhw3hqn" path="res://Villain/Animations/transform/f7.png" id="7_awtvf"]
+
+[resource]
+resource_name = "transform"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_oeo50"), ExtResource("2_mk0x7"), ExtResource("3_cm2hp"), ExtResource("4_dxkht"), ExtResource("5_jnocv"), ExtResource("6_xahpb"), ExtResource("7_awtvf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyCollider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}

@@ -20,8 +20,6 @@ func _ready():
 @export var player_control_enabled := true
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_down"):
-		movement_controller.knockback(Vector2(1000, -200))
 	if player_control_enabled:
 		process_player_control(delta)
 	else:
@@ -55,7 +53,7 @@ var health: int = max_health
 signal die
 
 func take_damage(amt: int):
-	health -= amt
+	#health -= amt
 	health_bar.update_health(health, max_health)
 	if health <= 0:
 		emit_signal("die")

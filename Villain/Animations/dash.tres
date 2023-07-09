@@ -1,0 +1,36 @@
+[gd_resource type="Animation" load_steps=6 format=3 uid="uid://bo2hkufnv36cw"]
+
+[ext_resource type="Texture2D" uid="uid://c48q7w4upkgij" path="res://Villain/Animations/dash/f1.png" id="1_cg42e"]
+[ext_resource type="Texture2D" uid="uid://daeqdvbljdnwv" path="res://Villain/Animations/dash/f2.png" id="2_s4t6w"]
+[ext_resource type="Texture2D" uid="uid://qmmc6movg13n" path="res://Villain/Animations/dash/f3.png" id="3_mjx3t"]
+[ext_resource type="Texture2D" uid="uid://1mrtbuq8y1nx" path="res://Villain/Animations/dash/f4.png" id="4_oli4j"]
+[ext_resource type="Texture2D" uid="uid://b8cumuo4dmh67" path="res://Villain/Animations/dash/f5.png" id="5_grmxu"]
+
+[resource]
+resource_name = "dash"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_cg42e"), ExtResource("2_s4t6w"), ExtResource("3_mjx3t"), ExtResource("4_oli4j"), ExtResource("5_grmxu")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyCollider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
