@@ -44,9 +44,9 @@ func process_player_control(delta):
 @onready var wall_on_top_ray = $Rays/WallOnTop
 
 func process_ai_control(delta):
-	print("-----")
-	print(wall_in_front_ray.is_colliding())
-	print(wall_on_top_ray.is_colliding())
+	#print("-----")
+	#print(wall_in_front_ray.is_colliding())
+	#print(wall_on_top_ray.is_colliding())
 	
 	if !wall_in_front_ray.is_colliding():
 		movement_controller.accelerate("right")

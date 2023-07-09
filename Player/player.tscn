@@ -1,26 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://s0tk725habor"]
+[gd_scene load_steps=8 format=3 uid="uid://s0tk725habor"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_8cxtt"]
-[ext_resource type="Texture2D" uid="uid://diub1gwdqoowj" path="res://Player/temp_player_sprite.png" id="2_8bit6"]
 [ext_resource type="PackedScene" uid="uid://bwfy1gvxjcha2" path="res://Player/MouseInteraction.tscn" id="3_6qkok"]
+[ext_resource type="PackedScene" uid="uid://dv00n22re7yg0" path="res://Hero/MovementController.tscn" id="4_pfwud"]
+[ext_resource type="Animation" uid="uid://ure26rrwm8uc" path="res://Player/Animations/idle.tres" id="5_dp0ns"]
+[ext_resource type="Texture2D" uid="uid://d186rlim8knnf" path="res://Player/Animations/Idle/f4.png" id="8_yp8gy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3iiog"]
-radius = 5.0
-height = 14.0
+radius = 0.0
+height = 0.0
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w47aj"]
+_data = {
+"idle": ExtResource("5_dp0ns")
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement_controller")]
+position = Vector2(0, 1.75678)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_8cxtt")
+movement_controller = NodePath("MovementController")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0510204, 0.0510204)
-texture = ExtResource("2_8bit6")
+texture_filter = 1
+texture = ExtResource("8_yp8gy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_3iiog")
-
-[node name="Player" type="Node2D" parent="."]
+disabled = true
 
 [node name="MouseInteraction" parent="." instance=ExtResource("3_6qkok")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MovementController" parent="." node_paths=PackedStringArray("body") instance=ExtResource("4_pfwud")]
+body = NodePath("..")
+momentum = -1.0
+max_jump_height = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w47aj")
+}

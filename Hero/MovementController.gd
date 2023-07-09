@@ -39,6 +39,8 @@ func _physics_process(delta):
 
 @export_group("Run")
 @export var max_velocity: float = 0
+var max_left_velocity: float = NAN
+var max_right_velocity: float = NAN
 @export var time_till_maxv: float = 1
 @onready var accel_x: float = max_velocity / (60 * time_till_maxv)
 @export var time_till_stop: float = 1
@@ -61,7 +63,14 @@ func accelerate(dir_s: String):
 		body.velocity.x = (body.velocity.x * momentum) + (dir * accel_x)
 	else:
 		body.velocity.x += dir * accel_x
-	if abs(body.velocity.x) > max_velocity:
+	if !is_nan(max_left_velocity) and !is_nan(max_right_velocity):
+		if dir_s == "right":
+			if abs(body.velocity.x) > max_right_velocity:
+				body.velocity.x = sign(body.velocity.x) * max_right_velocity
+		elif dir_s == "left":
+			if abs(body.velocity.x) > max_left_velocity:
+				body.velocity.x = sign(body.velocity.x) * max_left_velocity
+	elif abs(body.velocity.x) > max_velocity:
 		body.velocity.x = sign(body.velocity.x) * max_velocity
 
 func decelerate():

@@ -53,9 +53,6 @@ player_control_enabled = true
 invincible = true
 metadata/_edit_horizontal_guides_ = []
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -64)
-
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("6_25sk8")

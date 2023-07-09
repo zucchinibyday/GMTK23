@@ -17,8 +17,7 @@ class Tile:
 		self.alternative_title = _alternative_title
 	
 
-@onready var game_tilemap: TileMap = get_node("/root/Main/TileMap") 
-@onready var ingame_mouse = get_node("MouseSprite")
+@onready var game_tilemap: TileMap = get_node("/root/Main/TileMap")
 @onready var hero = get_node("/root/Main/Hero")
 
 @onready var past_hero_position = hero.position
@@ -31,13 +30,25 @@ class Tile:
 func _input(event):
 	# places tile
 	if event is InputEventMouseButton:
-		if Input.is_action_just_pressed("mb_left") or Input.is_action_pressed("mb_left"):
-			place_tile_on_cursor()
+		if Input.is_action_just_pressed("mb_left"):
+			handle_mouse_click()
+
+var player_tile_atlas = Vector2i(4, 1)
+var empty_tile_atlas = Vector2i(-1, -1)
 
 #Could be cleaner. Done this way to allow potential expansion, but didn't end up having time to do so.
-func place_tile_on_cursor():
+func handle_mouse_click():
 	var mouse_pos = game_tilemap.get_global_mouse_position()
 	var tile_coords = Vector2i(floor(mouse_pos / 16.0))
-	
-	#places a NEW tile on layer THREE.
-	game_tilemap.set_cell(0, tile_coords, 0, Vector2i(4, 1), 0)
+	var current_tile_atlas = game_tilemap.get_cell_atlas_coords(0, tile_coords)
+	print(current_tile_atlas)
+	if current_tile_atlas == player_tile_atlas:
+		remove_tile(tile_coords)
+	elif current_tile_atlas == empty_tile_atlas:
+		place_tile(tile_coords)
+
+func place_tile(tile_coords: Vector2i):
+	game_tilemap.set_cell(0, tile_coords, 0, player_tile_atlas, 0)
+
+func remove_tile(tile_coords: Vector2i):
+	game_tilemap.set_cell(0, tile_coords, 0, empty_tile_atlas, 0)

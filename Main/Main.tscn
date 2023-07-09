@@ -14,17 +14,17 @@ script = ExtResource("1_x28gl")
 position = Vector2(536, 310)
 floor_max_angle = 1.0472
 player_control_enabled = false
-health_bar = NodePath("Healthbar")
-
-[node name="Healthbar" parent="Hero" instance=ExtResource("2_g24hq")]
-z_index = 100
-offset_left = -190.0
-offset_top = -167.0
-offset_right = -190.0
-offset_bottom = -167.0
+health_bar = NodePath("Player/Healthbar")
 
 [node name="Player" parent="Hero" instance=ExtResource("5_t44lq")]
 position = Vector2(-112, -81)
+
+[node name="Healthbar" parent="Hero/Player" instance=ExtResource("2_g24hq")]
+z_index = 100
+offset_left = -194.0
+offset_top = -107.0
+offset_right = -194.0
+offset_bottom = -107.0
 
 [node name="Villain" parent="." instance=ExtResource("6_reyvj")]
 z_index = -10

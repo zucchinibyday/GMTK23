@@ -1,0 +1,23 @@
+[gd_resource type="Animation" load_steps=5 format=3 uid="uid://ure26rrwm8uc"]
+
+[ext_resource type="Texture2D" uid="uid://chus7kbhyaidl" path="res://Player/Animations/Idle/f1.png" id="1_t1xig"]
+[ext_resource type="Texture2D" uid="uid://vltnh8qyyjlk" path="res://Player/Animations/Idle/f2.png" id="2_yn333"]
+[ext_resource type="Texture2D" uid="uid://d2074bm1wju4b" path="res://Player/Animations/Idle/f3.png" id="3_sefp7"]
+[ext_resource type="Texture2D" uid="uid://d186rlim8knnf" path="res://Player/Animations/Idle/f4.png" id="4_ipnu0"]
+
+[resource]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_t1xig"), ExtResource("2_yn333"), ExtResource("3_sefp7"), ExtResource("4_ipnu0")]
+}
