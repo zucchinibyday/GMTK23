@@ -18,7 +18,7 @@ class Tile:
 	
 
 @onready var game_tilemap = get_node("/root/Main/TileMap") 
-@onready var mouse = get_node("MouseSprite")
+@onready var ingame_mouse = get_node("MouseSprite")
 @onready var hero = get_node("/root/Main/Hero")
 
 @onready var past_hero_position = hero.position
@@ -31,11 +31,11 @@ class Tile:
 
 #screen jankiness means I can't just set it in the center
 func _ready():
-	mouse.position = hero.position
+	ingame_mouse.position = hero.position
 
 #manually moving the mouse with the autoscroll. Cringe, but oh well
 func _process(delta):
-	mouse.position += hero.position - past_hero_position
+	ingame_mouse.position += hero.position - past_hero_position
 	past_hero_position = hero.position
 
 
@@ -53,11 +53,11 @@ func _unhandled_input(event):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	#Moves the mouse when you move your mouse (see: aforementioned screen jankiness forcing a questionable implementation)
 	if event is InputEventMouseMotion:
-		mouse.position += event.relative
+		ingame_mouse.position += event.relative
 			
 #Could be cleaner. Done this way to allow potential expansion, but didn't end up having time to do so.
 func place_tile_on_cursor():
-	select_tile(game_tilemap.local_to_map(mouse.position))
+	select_tile(game_tilemap.local_to_map(ingame_mouse.position))
 	#places a NEW tile on layer THREE.
 	game_tilemap.set_cell(output_tile.layer, output_tile.coords, output_tile.source_id, output_tile.atlas_coords, output_tile.alternative_title)
 	

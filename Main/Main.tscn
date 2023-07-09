@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu3paqv8beb0x"]
+[gd_scene load_steps=7 format=3 uid="uid://cu3paqv8beb0x"]
 
 [ext_resource type="PackedScene" uid="uid://b5b0gdcpj2s20" path="res://Hero/Hero.tscn" id="1_wvkbg"]
 [ext_resource type="Script" path="res://Main/Main.gd" id="1_x28gl"]
 [ext_resource type="PackedScene" uid="uid://csvjucxmn0ki6" path="res://Hero/Healthbar/Healthbar.tscn" id="2_g24hq"]
 [ext_resource type="TileSet" uid="uid://b1443qm0dk2io" path="res://test_set.tres" id="4_v23vq"]
+[ext_resource type="PackedScene" uid="uid://s0tk725habor" path="res://Player/Player.tscn" id="5_t44lq"]
 [ext_resource type="PackedScene" uid="uid://corjqh4mlnj62" path="res://Villain/Villain.tscn" id="6_reyvj"]
 
 [node name="Main" type="Node2D"]
@@ -19,6 +20,9 @@ offset_left = -190.0
 offset_top = -167.0
 offset_right = -190.0
 offset_bottom = -167.0
+
+[node name="Player" parent="Hero" instance=ExtResource("5_t44lq")]
+position = Vector2(-112, -81)
 
 [node name="Villain" parent="." instance=ExtResource("6_reyvj")]
 z_index = -10
