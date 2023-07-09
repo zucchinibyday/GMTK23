@@ -46,9 +46,11 @@ _data = {
 size = Vector2(18, 29)
 
 [node name="Hero" type="CharacterBody2D" node_paths=PackedStringArray("movement_controller")]
+collision_mask = 15
 script = ExtResource("1_3u4r6")
 movement_controller = NodePath("MovementController")
 player_control_enabled = true
+invincible = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -64)

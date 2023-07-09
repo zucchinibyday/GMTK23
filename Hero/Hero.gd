@@ -21,6 +21,7 @@ func _ready():
 	movement_controller.connect("hit_ground", on_hit_ground)
 
 @export var player_control_enabled := false
+@export var invincible := false
 
 func _process(delta):
 	if player_control_enabled:
@@ -56,6 +57,8 @@ var health: int = max_health
 signal die
 
 func take_damage(amt: int):
+	if invincible: 
+		return
 	health -= amt
 	health_bar.update_health(health, max_health)
 	if health <= 0:
