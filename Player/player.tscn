@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bwfy1gvxjcha2" path="res://Player/MouseInteraction.tscn" id="3_6qkok"]
 [ext_resource type="PackedScene" uid="uid://dv00n22re7yg0" path="res://Hero/MovementController.tscn" id="4_pfwud"]
 [ext_resource type="Animation" uid="uid://ure26rrwm8uc" path="res://Player/Animations/idle.tres" id="5_dp0ns"]
-[ext_resource type="Texture2D" uid="uid://chus7kbhyaidl" path="res://Player/Animations/Idle/f1.png" id="5_tf32v"]
+[ext_resource type="Texture2D" uid="uid://d2074bm1wju4b" path="res://Player/Animations/Idle/f3.png" id="7_kbh5x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3iiog"]
 radius = 0.0
@@ -25,7 +25,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("5_tf32v")
+texture = ExtResource("7_kbh5x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_3iiog")

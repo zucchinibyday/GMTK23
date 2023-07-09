@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bii123vyo47gh"]
+
+[ext_resource type="Texture2D" uid="uid://dy2gkmm80lglb" path="res://TitleScreen/title12.png" id="1_5c1e3"]
+[ext_resource type="Script" path="res://TitleScreen/TitleScreen.gd" id="1_187dq"]
+[ext_resource type="Texture2D" uid="uid://dlvyu1qm3xbps" path="res://TitleScreen/start_selected.png" id="3_fh16j"]
+[ext_resource type="Texture2D" uid="uid://he5csjaw5u24" path="res://TitleScreen/quit_unselected.png" id="4_vpmdy"]
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_187dq")
+
+[node name="Title12" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.01, 1.01)
+texture = ExtResource("1_5c1e3")
+offset = Vector2(200, 112)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="StartLabel" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(209, 168)
+texture = ExtResource("3_fh16j")
+
+[node name="QuitLabel" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(208, 200)
+texture = ExtResource("4_vpmdy")
