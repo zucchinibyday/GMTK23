@@ -74,7 +74,7 @@ func ready_state():
 		VillainState.new("SWAP", "idle", __swap_start, __blank_stop, __blank_process, __swap_physics)
 	)
 	all_states.REPOSITION_AND_ATTACK = (
-		VillainState.new("REPOSITION_AND_ATTACK", "idle", __blank_start, __blank_stop, __blank_process, __reposition_and_attack_physics)
+		VillainState.new("REPOSITION_AND_ATTACK", "idle", __reposition_and_attack_start, __blank_stop, __blank_process, __reposition_and_attack_physics)
 	)
 	all_states.DECIDE_ATTACK = (
 		VillainState.new("DECIDE_ATTACK", "idle", __blank_start, __blank_stop, __decide_process)
@@ -83,14 +83,14 @@ func ready_state():
 		VillainState.new('DASH', "dash", __dash_start, __blank_stop, __blank_process, __dash_physics)
 	)
 	all_states.REPOSITION = (
-		VillainState.new('REPOSITION', "idle", __blank_start, __blank_stop, __blank_process, __reposition_physics)
+		VillainState.new('REPOSITION', "idle", __reposition_start, __blank_stop, __blank_process, __reposition_physics)
 	)
-	transition_state(all_states.IDLE)
+	transition_state(all_states.REPOSITION)
 
 var transitioning := false
 
 func transition_state(new_state: VillainState, old_state: VillainState = all_states.IDLE):
-	#print("Transitioning from %s to %s" % [old_state.state_name, new_state.state_name])
+	print("Transitioning from %s to %s" % [old_state.state_name, new_state.state_name])
 	$Sprite2D.flip_h = __side_of_hero() == 1
 	transitioning = true
 	velocity = hero.velocity
@@ -119,8 +119,23 @@ static func __blank_process(state, body, delta):
 @warning_ignore("unused_parameter")
 static func __blank_physics(state, body, delta):
 	return
+
+
+func teleport(new_pos: Vector2):
+	anim.clear_queue()
+	anim.play("transform_fast")
+	await anim.animation_finished
+	global_position = new_pos
+	anim.play_backwards("transform_fast")
+	await anim.animation_finished
 	
 
+	
+var wait_to_teleport = 2.5
+	
+func __reposition_start(state, body: Villain):
+	state.variables.timer = body.get_tree().create_timer(wait_to_teleport)
+	
 func __reposition_physics(state, body: Villain, delta):
 	var target = body.hero.global_position + Vector2(__side_of_hero() * TARGET_REL_TO_HERO.x, TARGET_REL_TO_HERO.y)
 	var new_pos = body.global_position.move_toward(
@@ -130,8 +145,13 @@ func __reposition_physics(state, body: Villain, delta):
 	body.global_position = new_pos
 	if body.global_position == target:
 		transition_state(all_states.IDLE, state)
-	
+	if state.variables.timer.time_left == 0:
+		await teleport(body.hero.global_position + Vector2(__side_of_hero() * TARGET_REL_TO_HERO.x, TARGET_REL_TO_HERO.y))
+		transition_state(all_states.IDLE, state)
 
+func __reposition_and_attack_start(state, body: Villain):
+	state.variables.timer = body.get_tree().create_timer(wait_to_teleport)
+	
 func __reposition_and_attack_physics(state, body: Villain, delta):
 	var target = body.hero.global_position + Vector2(__side_of_hero() * TARGET_REL_TO_HERO.x, TARGET_REL_TO_HERO.y)
 	var new_pos = body.global_position.move_toward(
@@ -140,8 +160,12 @@ func __reposition_and_attack_physics(state, body: Villain, delta):
 	)
 	body.global_position = new_pos
 	if body.global_position == target:
+		state.variables.timer
 		transition_state(all_states.DECIDE_ATTACK, state)
-
+	if state.variables.timer.time_left == 0:
+		await teleport(body.hero.global_position + Vector2(__side_of_hero() * TARGET_REL_TO_HERO.x, TARGET_REL_TO_HERO.y))
+		transition_state(all_states.DECIDE_ATTACK, state)
+	
 
 func __swap_start(state, body: Villain):
 	state.variables.desired_side = -1 * __side_of_hero()

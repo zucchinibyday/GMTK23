@@ -1,0 +1,22 @@
+[gd_resource type="Animation" load_steps=5 format=3 uid="uid://bttpsqixquaej"]
+
+[ext_resource type="Texture2D" uid="uid://b6u2u7tgjmlpr" path="res://Villain/Animations/transform/f2.png" id="1_dkejd"]
+[ext_resource type="Texture2D" uid="uid://cf5rufaomojgb" path="res://Villain/Animations/transform/f3.png" id="2_vt5w5"]
+[ext_resource type="Texture2D" uid="uid://xxb5yu1hx0em" path="res://Villain/Animations/transform/f5.png" id="3_ogy2v"]
+[ext_resource type="Texture2D" uid="uid://crog3knhw3hqn" path="res://Villain/Animations/transform/f7.png" id="4_8kgv6"]
+
+[resource]
+resource_name = "transform_fast"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_dkejd"), ExtResource("2_vt5w5"), ExtResource("3_ogy2v"), ExtResource("4_8kgv6")]
+}

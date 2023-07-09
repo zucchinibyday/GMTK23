@@ -40,3 +40,5 @@ func on_body_entered(body):
 	if body is Hero:
 		body.take_damage(1)
 		disappear()
+	if body is TileMap:
+		disappear()

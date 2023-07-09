@@ -40,7 +40,4 @@ func place_tile_on_cursor():
 	var tile_coords = Vector2i(floor(mouse_pos / 16.0))
 	
 	#places a NEW tile on layer THREE.
-	game_tilemap.set_cell(0, tile_coords, selected_tile, Vector2i(0,0), 0)
-	
-func select_tile(coords: Vector2i):
-	output_tile = Tile.new(0, coords, selected_tile, Vector2i(0,0), 0)
+	game_tilemap.set_cell(0, tile_coords, 0, Vector2i(4, 1), 0)

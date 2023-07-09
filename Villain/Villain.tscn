@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://corjqh4mlnj62"]
+[gd_scene load_steps=13 format=3 uid="uid://corjqh4mlnj62"]
 
 [ext_resource type="Script" path="res://Villain/Villain.gd" id="1_bouxs"]
 [ext_resource type="PackedScene" uid="uid://gm58ywn67oy5" path="res://Villain/VillainStateController.tscn" id="2_imkxo"]
@@ -6,14 +6,16 @@
 [ext_resource type="Animation" uid="uid://dvvs8l8yig32t" path="res://Villain/Animations/idle.tres" id="3_hyhkq"]
 [ext_resource type="Animation" uid="uid://b1t7qjuyh35ue" path="res://Villain/Animations/spellcast.tres" id="4_2jfow"]
 [ext_resource type="Animation" uid="uid://k11ipqh5npu3" path="res://Villain/Animations/transform.tres" id="6_g8r78"]
-[ext_resource type="Texture2D" uid="uid://8kowxsv2lwnx" path="res://Villain/Animations/idle/f2.png" id="7_isddj"]
+[ext_resource type="Animation" uid="uid://bttpsqixquaej" path="res://Villain/Animations/transform_fast.tres" id="7_jiqab"]
+[ext_resource type="Texture2D" uid="uid://crog3knhw3hqn" path="res://Villain/Animations/transform/f7.png" id="10_e55j3"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pjih6"]
 _data = {
 "dash": ExtResource("3_1pbuy"),
 "idle": ExtResource("3_hyhkq"),
 "spellcast": ExtResource("4_2jfow"),
-"transform": ExtResource("6_g8r78")
+"transform": ExtResource("6_g8r78"),
+"transform_fast": ExtResource("7_jiqab")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lvjhb"]
@@ -25,6 +27,7 @@ radius = 12.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_1wdxw"]
 
 [node name="Villain" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_bouxs")
 
 [node name="VillainStateController" parent="." instance=ExtResource("2_imkxo")]
@@ -36,7 +39,7 @@ libraries = {
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("7_isddj")
+texture = ExtResource("10_e55j3")
 offset = Vector2(0, 4)
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
