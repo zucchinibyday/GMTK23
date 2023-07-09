@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://corjqh4mlnj62"]
+
+[ext_resource type="Script" path="res://Villain/Villain.gd" id="1_bouxs"]
+[ext_resource type="PackedScene" uid="uid://co4suw1skn6w8" path="res://Villain/VillainStateController.tscn" id="2_imkxo"]
+[ext_resource type="Animation" uid="uid://dvvs8l8yig32t" path="res://Villain/Animations/idle.tres" id="3_hyhkq"]
+[ext_resource type="Animation" uid="uid://b1t7qjuyh35ue" path="res://Villain/Animations/spellcast.tres" id="4_2jfow"]
+[ext_resource type="Texture2D" uid="uid://bu3c5b3t80eul" path="res://Villain/Animations/spellcast/f10.png" id="5_fxg6p"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjih6"]
+_data = {
+"idle": ExtResource("3_hyhkq"),
+"spellcast": ExtResource("4_2jfow")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lvjhb"]
+radius = 31.0161
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvom7"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1wdxw"]
+
+[node name="Villain" type="Area2D" node_paths=PackedStringArray("state_controller")]
+script = ExtResource("1_bouxs")
+state_controller = NodePath("VillainStateController")
+
+[node name="VillainStateController" parent="." instance=ExtResource("2_imkxo")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pjih6")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("5_fxg6p")
+
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
+position = Vector2(1, 8)
+shape = SubResource("CircleShape2D_lvjhb")
+
+[node name="HeadCollider" type="CollisionShape2D" parent="."]
+position = Vector2(2, -26)
+shape = SubResource("CircleShape2D_mvom7")
+
+[node name="Claws" type="Area2D" parent="."]
+
+[node name="ClawCollider" type="CollisionShape2D" parent="Claws"]
+position = Vector2(-26, 28)
+shape = SubResource("CircleShape2D_1wdxw")
+disabled = true

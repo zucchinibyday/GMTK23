@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://gm58ywn67oy5"]
+
+[sub_resource type="GDScript" id="GDScript_muqeh"]
+script/source = "extends Node
+class_name VillainStateController
+
+@export var body: Area2D
+
+"
+
+[node name="VillainStateController" type="Node"]
+script = SubResource("GDScript_muqeh")

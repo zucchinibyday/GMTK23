@@ -1,0 +1,21 @@
+[gd_resource type="Animation" load_steps=4 format=3 uid="uid://b08imeb2h3j2s"]
+
+[ext_resource type="Texture2D" uid="uid://d3dgsoe432dqp" path="res://Hero/Animations/get_up/f1.png" id="1_loccu"]
+[ext_resource type="Texture2D" uid="uid://bi2b6ytorjt3c" path="res://Hero/Animations/get_up/f2.png" id="2_cle8u"]
+[ext_resource type="Texture2D" uid="uid://onokqka0no3v" path="res://Hero/Animations/get_up/f3.png" id="3_66rf4"]
+
+[resource]
+resource_name = "get_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_loccu"), ExtResource("2_cle8u"), ExtResource("3_66rf4")]
+}

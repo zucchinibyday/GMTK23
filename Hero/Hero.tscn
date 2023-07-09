@@ -1,19 +1,65 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5b0gdcpj2s20"]
+[gd_scene load_steps=17 format=3 uid="uid://b5b0gdcpj2s20"]
 
 [ext_resource type="Script" path="res://Hero/Hero.gd" id="1_3u4r6"]
+[ext_resource type="Texture2D" uid="uid://cbst3ae3segk0" path="res://Hero/Animations/idle/f5.png" id="2_1u7hl"]
 [ext_resource type="PackedScene" uid="uid://dv00n22re7yg0" path="res://Hero/MovementController.tscn" id="2_ejthm"]
-[ext_resource type="Texture2D" uid="uid://cn8jloaubt3vh" path="res://hero.png" id="3_ctcng"]
+[ext_resource type="Animation" uid="uid://dg73p0q5pbkcx" path="res://Hero/Animations/die.tres" id="2_kenj5"]
+[ext_resource type="Texture2D" uid="uid://bk0fwgt2reudl" path="res://Hero/Animations/idle/f1.png" id="3_ka6im"]
+[ext_resource type="Texture2D" uid="uid://dfwvroaeleiub" path="res://Hero/Animations/idle/f2.png" id="4_7u4r6"]
+[ext_resource type="Texture2D" uid="uid://bj1c3tx6egsar" path="res://Hero/Animations/idle/f3.png" id="5_awokg"]
+[ext_resource type="Texture2D" uid="uid://bf3idwbrfhhq5" path="res://Hero/Animations/idle/f4.png" id="6_25sk8"]
+[ext_resource type="Animation" uid="uid://c2q3q2hblp31m" path="res://Hero/Animations/run.tres" id="8_7blqm"]
+[ext_resource type="Animation" uid="uid://byd3ymv8s673b" path="res://Hero/Animations/run_transition.tres" id="9_af1uc"]
+[ext_resource type="Animation" uid="uid://6ev10vvievof" path="res://Hero/Animations/jump.tres" id="11_eejjl"]
+[ext_resource type="Animation" uid="uid://cltii8kw8rvll" path="res://Hero/Animations/fall.tres" id="12_2irsl"]
+[ext_resource type="Animation" uid="uid://b08imeb2h3j2s" path="res://Hero/Animations/get_up.tres" id="12_740w4"]
+
+[sub_resource type="Animation" id="Animation_i57kt"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_ka6im"), ExtResource("4_7u4r6"), ExtResource("5_awokg"), ExtResource("6_25sk8"), ExtResource("2_1u7hl")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a04q8"]
+_data = {
+"die": ExtResource("2_kenj5"),
+"fall": ExtResource("12_2irsl"),
+"get_up": ExtResource("12_740w4"),
+"idle": SubResource("Animation_i57kt"),
+"jump": ExtResource("11_eejjl"),
+"run": ExtResource("8_7blqm"),
+"run_transition": ExtResource("9_af1uc")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uguvx"]
-size = Vector2(18, 38)
+size = Vector2(18, 29)
 
 [node name="Hero" type="CharacterBody2D" node_paths=PackedStringArray("movement_controller")]
 script = ExtResource("1_3u4r6")
 movement_controller = NodePath("MovementController")
+player_control_enabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -64)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("3_ctcng")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a04q8")
+}
 
 [node name="MovementController" parent="." node_paths=PackedStringArray("body") instance=ExtResource("2_ejthm")]
 body = NodePath("..")
@@ -24,6 +70,7 @@ momentum = 0.0
 time_till_max_height = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_uguvx")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

@@ -1,0 +1,23 @@
+[gd_resource type="Animation" load_steps=5 format=3 uid="uid://b8x82kmt3updk"]
+
+[ext_resource type="Texture2D" uid="uid://c5dwr7v4vj43o" path="res://Villain/Attacks/Animations/Orb/f1.png" id="1_05yew"]
+[ext_resource type="Texture2D" uid="uid://cygurx2chewan" path="res://Villain/Attacks/Animations/Orb/f2.png" id="2_a0g8q"]
+[ext_resource type="Texture2D" uid="uid://di1fushkefjck" path="res://Villain/Attacks/Animations/Orb/f3.png" id="3_4ie12"]
+[ext_resource type="Texture2D" uid="uid://c6x7jhj8w5032" path="res://Villain/Attacks/Animations/Orb/f4.png" id="4_p8svk"]
+
+[resource]
+resource_name = "orb"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_05yew"), ExtResource("2_a0g8q"), ExtResource("3_4ie12"), ExtResource("4_p8svk")]
+}
