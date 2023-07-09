@@ -16,8 +16,11 @@ func _ready():
 	
 	movement_controller.connect("start_moving", on_start_moving)
 	movement_controller.connect("stop_moving", on_stop_moving)
+	movement_controller.connect("jumped", on_jump)
+	movement_controller.connect("max_height_reached", on_max_height_reached)
+	movement_controller.connect("hit_ground", on_hit_ground)
 
-@export var player_control_enabled := true
+@export var player_control_enabled := false
 
 func _process(delta):
 	if player_control_enabled:
@@ -47,7 +50,7 @@ func process_ai_control(delta):
 			
 @export_group("Health")
 @export var health_bar: HealthBar
-@export var max_health: int = 8
+@export var max_health: int = 10
 var health: int = max_health
 
 signal die
@@ -56,6 +59,11 @@ func take_damage(amt: int):
 	health -= amt
 	health_bar.update_health(health, max_health)
 	if health <= 0:
+		anim.clear_queue()
+		anim.play("die")
+		$CollisionShape2D.disabled = true
+		await anim.animation_finished
+		await get_tree().create_timer(0.8).timeout
 		emit_signal("die")
 		
 @onready var anim = $AnimationPlayer
@@ -72,3 +80,19 @@ func on_stop_moving():
 	anim.clear_queue()
 	anim.play_backwards("run_transition")
 	anim.queue("idle")
+
+func on_jump():
+	anim.clear_queue()
+	anim.play("jump")
+
+func on_max_height_reached():
+	anim.clear_queue()
+	anim.play("fall")
+
+func on_hit_ground():
+	anim.clear_queue()
+	if movement_controller.is_walking:
+		anim.play("run")
+	else:
+		anim.play("get_up")
+		anim.queue("idle")

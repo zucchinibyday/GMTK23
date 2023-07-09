@@ -11,7 +11,6 @@ script = ExtResource("1_x28gl")
 
 [node name="Hero" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("1_wvkbg")]
 position = Vector2(536, 310)
-player_control_enabled = false
 health_bar = NodePath("Healthbar")
 
 [node name="Healthbar" parent="Hero" instance=ExtResource("2_g24hq")]

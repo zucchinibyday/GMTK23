@@ -37,7 +37,6 @@ func _physics_process(delta):
 	position += velocity * delta
 
 func on_body_entered(body):
-	print("entered")
 	if body is Hero:
 		body.take_damage(1)
 		disappear()

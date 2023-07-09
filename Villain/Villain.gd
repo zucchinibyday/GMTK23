@@ -14,7 +14,6 @@ func _ready():
 @warning_ignore("unused_parameter")
 func _process(delta):
 	if rng.randf() <= delta:
-		print("increase anger")
 		anger += 1
 	if Input.is_action_just_pressed("ui_up"):
 		summon_orbs(1)

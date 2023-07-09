@@ -6,6 +6,8 @@ var body: CharacterBody2D
 
 var ignoring_input: bool = false
 
+var is_falling: bool = false
+
 func _physics_process(delta):
 	if is_walking and !was_walking:
 		emit_signal("start_moving")
@@ -22,9 +24,16 @@ func _physics_process(delta):
 		if jumping:
 			frames_since_jump += 1
 			if is_jump_over():
+				emit_signal("max_height_reached")
 				jumping = false
+		else:
+			is_falling = true
 		body.velocity.y += gravity
-
+	
+	if is_falling and body.is_on_floor():
+		emit_signal("hit_ground")
+		is_falling = false
+	
 	body.move_and_slide()
 	is_walking = false
 
@@ -110,12 +119,17 @@ func distance_covered_during_jump() -> float:
 @onready var jump_velocity: float = (-2 * max_jump_height) / (time_till_max_height)
 @onready var gravity: float = (2 * max_jump_height) / (time_till_max_height * time_till_max_height * 60)
 
+signal jumped
+signal max_height_reached
+signal hit_ground
+
 var jumping: bool = false
 var frames_since_jump: int
 
 func jump():
 	if ignoring_input:
 		return
+	emit_signal("jumped")
 	jumping = true
 	frames_since_jump = 0
 	body.velocity.y = jump_velocity

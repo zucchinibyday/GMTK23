@@ -1,0 +1,22 @@
+[gd_resource type="Animation" load_steps=5 format=3 uid="uid://cltii8kw8rvll"]
+
+[ext_resource type="Texture2D" uid="uid://c5b5f5ksl3jp5" path="res://Hero/Animations/jump/f3.png" id="1_xujmc"]
+[ext_resource type="Texture2D" uid="uid://bqx4gnrt6oov3" path="res://Hero/Animations/jump/f4.png" id="2_h7440"]
+[ext_resource type="Texture2D" uid="uid://b24brijyyqolx" path="res://Hero/Animations/jump/f5.png" id="3_r4133"]
+[ext_resource type="Texture2D" uid="uid://cksyc5coffkwi" path="res://Hero/Animations/jump/f6.png" id="4_l73td"]
+
+[resource]
+resource_name = "fall"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_xujmc"), ExtResource("2_h7440"), ExtResource("3_r4133"), ExtResource("4_l73td")]
+}
